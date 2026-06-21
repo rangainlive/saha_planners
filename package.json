@@ -1,0 +1,11 @@
+{
+  "name": "saha-planners",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev":     "cd client && npm run dev",
+    "build":   "cd client && npm run build",
+    "preview": "cd client && npm run preview",
+    "server":  "cd server && node server.js"
+  }
+}

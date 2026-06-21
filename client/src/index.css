@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    background-color: #0a0e1a;
+    color: #ffffff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a   { text-decoration: none; color: inherit; }
+  ul  { list-style: none; padding: 0; margin: 0; }
+  img { display: block; max-width: 100%; }
+}
+
+@layer utilities {
+  /* ── Gold shimmer text ───────────────── */
+  .gold-text {
+    background: linear-gradient(90deg, #C9943A, #E8B86D, #C9943A);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* ── Eyebrow label ───────────────────── */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-gold text-xs font-medium uppercase tracking-[0.2em];
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-8 h-px bg-gold flex-shrink-0;
+  }
+
+  /* ── Primary button ──────────────────── */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold text-navy font-semibold text-sm tracking-wide
+           px-7 py-3.5 rounded border border-gold
+           transition-all duration-300
+           hover:bg-gold-light hover:border-gold-light hover:-translate-y-0.5;
+    &:hover { box-shadow: 0 8px 28px rgba(201,148,58,0.35); }
+  }
+
+  /* ── Outline button ──────────────────── */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           bg-transparent text-gold font-semibold text-sm tracking-wide
+           px-7 py-3.5 rounded border border-gold
+           transition-all duration-300
+           hover:bg-gold hover:text-navy hover:-translate-y-0.5;
+    &:hover { box-shadow: 0 8px 28px rgba(201,148,58,0.35); }
+  }
+
+  /* ── Section wrapper ─────────────────── */
+  .section-wrap { @apply py-24 px-6; }
+  .inner        { @apply max-w-6xl mx-auto; }
+
+  /* ── Section header text ─────────────── */
+  .section-heading {
+    @apply font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight;
+  }
+  .section-sub {
+    @apply text-white/55 text-base leading-relaxed mt-4 max-w-xl;
+  }
+
+  /* ── Card base ───────────────────────── */
+  .card {
+    @apply bg-navy-card border border-white/5 rounded-xl
+           transition-all duration-300
+           hover:border-gold/30 hover:-translate-y-1.5;
+    &:hover { box-shadow: 0 20px 60px rgba(201,148,58,0.1); }
+  }
+
+  /* ── Gold border glow ────────────────── */
+  .gold-ring {
+    @apply border border-gold/30 rounded-full;
+  }
+}
+
+/* ── Animations ───────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-14px); }
+}
+@keyframes bounceY {
+  0%,100% { transform: translateY(0); opacity: 1; }
+  60%     { transform: translateY(10px); opacity: 0.3; }
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: #C9943A; border-radius: 3px; }
